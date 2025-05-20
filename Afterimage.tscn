@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://bo4qjogfskkhj"]
+
+[ext_resource type="Texture2D" uid="uid://jgha8c54uyjw" path="res://assets/idle_1.svg" id="1_2ptq0"]
+[ext_resource type="Shader" uid="uid://bs05a1fs2y2mp" path="res://PlayerBullet.gdshader" id="1_3wnbf"]
+[ext_resource type="Texture2D" uid="uid://esixuwxwl4hv" path="res://assets/idle_2.svg" id="2_57sva"]
+[ext_resource type="Texture2D" uid="uid://dhxw41avrsi04" path="res://assets/left_1.svg" id="3_3wnbf"]
+[ext_resource type="Texture2D" uid="uid://m301rpows5i" path="res://assets/left_2.svg" id="4_i50ng"]
+[ext_resource type="Texture2D" uid="uid://f7crsy7q2k6w" path="res://assets/right_1.svg" id="5_l7idj"]
+[ext_resource type="Texture2D" uid="uid://ch2d06iy0kvyq" path="res://assets/right_2.svg" id="6_sw3a3"]
+[ext_resource type="Script" uid="uid://6nuq7y0qdt1p" path="res://Afterimage.cs" id="7_57sva"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i50ng"]
+shader = ExtResource("1_3wnbf")
+shader_parameter/hue_shift = 0.0
+shader_parameter/saturation_mult = 1.0
+shader_parameter/value_mult = 1.0
+shader_parameter/brightness_add = 0.0
+shader_parameter/contrast_mult = 1.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uhkr3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2ptq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_57sva")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3wnbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i50ng")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_l7idj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sw3a3")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[node name="Afterimage" type="AnimatedSprite2D"]
+z_index = 1
+material = SubResource("ShaderMaterial_i50ng")
+sprite_frames = SubResource("SpriteFrames_uhkr3")
+animation = &"idle"
+speed_scale = 2.0
+script = ExtResource("7_57sva")

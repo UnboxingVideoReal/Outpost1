@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://bo1ihutjiu08p"]
+
+[ext_resource type="Texture2D" uid="uid://jgha8c54uyjw" path="res://assets/idle_1.svg" id="1_h4qhm"]
+[ext_resource type="Texture2D" uid="uid://esixuwxwl4hv" path="res://assets/idle_2.svg" id="2_jnpi6"]
+[ext_resource type="Texture2D" uid="uid://dhxw41avrsi04" path="res://assets/left_1.svg" id="3_k2l7r"]
+[ext_resource type="Texture2D" uid="uid://m301rpows5i" path="res://assets/left_2.svg" id="4_1a1k8"]
+[ext_resource type="Texture2D" uid="uid://f7crsy7q2k6w" path="res://assets/right_1.svg" id="5_1o7gj"]
+[ext_resource type="Texture2D" uid="uid://ch2d06iy0kvyq" path="res://assets/right_2.svg" id="6_kvesc"]
+[ext_resource type="Script" uid="uid://m1ifyjdldxh7" path="res://Enigma.cs" id="7_jnpi6"]
+[ext_resource type="AudioStream" uid="uid://bh8bep06j0cwq" path="res://assets/sounds/plrbullet.mp3" id="8_ghbn6"]
+[ext_resource type="AudioStream" uid="uid://ckcplhpxew7ec" path="res://assets/sounds/dash.mp3" id="9_w1nb1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unpcq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h4qhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jnpi6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k2l7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1a1k8")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1o7gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kvesc")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unpcq"]
+
+[node name="Enigma" type="CharacterBody2D"]
+z_index = 2
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("7_jnpi6")
+metadata/_edit_vertical_guides_ = [-184.0]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_unpcq")
+animation = &"idle"
+frame_progress = 0.67554
+speed_scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+top_level = true
+z_index = 4
+scale = Vector2(0.025, 0.025)
+shape = SubResource("RectangleShape2D_unpcq")
+debug_color = Color(1, 0, 0, 1)
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ghbn6")
+volume_db = -16.611
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(2.12284, 4.29944)
+stream = ExtResource("9_w1nb1")
+volume_db = -9.798

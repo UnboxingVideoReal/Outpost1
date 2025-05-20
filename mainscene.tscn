@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5rblko1mxvgi"]
+
+[ext_resource type="Script" uid="uid://bs400v4qbk3ux" path="res://Main.cs" id="1_dn5c8"]
+[ext_resource type="PackedScene" uid="uid://dj6jh0yxsqxn2" path="res://PlayerBullet.tscn" id="1_xtb1e"]
+[ext_resource type="PackedScene" uid="uid://bo1ihutjiu08p" path="res://Enigma.tscn" id="2_dn5c8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtb1e"]
+size = Vector2(20, 759)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn5c8"]
+size = Vector2(20, 759)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lfti"]
+size = Vector2(960, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbvtr"]
+size = Vector2(960, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fl65m"]
+size = Vector2(20, 799)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76yo1"]
+size = Vector2(1000, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bn17"]
+size = Vector2(20, 799)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ftms"]
+size = Vector2(1000, 20)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_dn5c8")
+
+[node name="Enigma" parent="." instance=ExtResource("2_dn5c8")]
+
+[node name="PlayerBullet" parent="." instance=ExtResource("1_xtb1e")]
+
+[node name="playercol" type="StaticBody2D" parent="."]
+position = Vector2(0, 2)
+collision_layer = 4
+collision_mask = 4
+
+[node name="1" type="CollisionShape2D" parent="playercol"]
+z_index = 123
+position = Vector2(-10, 359.5)
+shape = SubResource("RectangleShape2D_xtb1e")
+debug_color = Color(1, 0, 0, 1)
+
+[node name="2" type="CollisionShape2D" parent="playercol"]
+z_index = 123
+position = Vector2(970, 359.5)
+shape = SubResource("RectangleShape2D_dn5c8")
+debug_color = Color(1, 0, 0, 1)
+
+[node name="3" type="CollisionShape2D" parent="playercol"]
+z_index = 123
+position = Vector2(480, -11)
+shape = SubResource("RectangleShape2D_5lfti")
+debug_color = Color(1, 0, 0, 1)
+
+[node name="4" type="CollisionShape2D" parent="playercol"]
+z_index = 123
+position = Vector2(480, 728.5)
+shape = SubResource("RectangleShape2D_sbvtr")
+debug_color = Color(1, 0, 0, 1)
+
+[node name="bulletcol" type="StaticBody2D" parent="."]
+collision_layer = 24
+collision_mask = 24
+
+[node name="1b" type="CollisionShape2D" parent="bulletcol"]
+z_index = 123
+position = Vector2(-30, 361.5)
+shape = SubResource("RectangleShape2D_fl65m")
+debug_color = Color(0, 0, 1, 1)
+
+[node name="2b" type="CollisionShape2D" parent="bulletcol"]
+z_index = 123
+position = Vector2(480, -28)
+shape = SubResource("RectangleShape2D_76yo1")
+debug_color = Color(0, 0, 1, 1)
+
+[node name="3b" type="CollisionShape2D" parent="bulletcol"]
+z_index = 123
+position = Vector2(990, 361.5)
+shape = SubResource("RectangleShape2D_8bn17")
+debug_color = Color(0, 0, 1, 1)
+
+[node name="4b" type="CollisionShape2D" parent="bulletcol"]
+z_index = 123
+position = Vector2(480, 751)
+shape = SubResource("RectangleShape2D_1ftms")
+debug_color = Color(0, 0, 1, 1)
