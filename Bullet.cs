@@ -9,6 +9,9 @@ public partial class Bullet : RigidBody2D
     public bool Visi = false;
     private Vector2 _velocity;
     public Vector2 Target;
+    public Vector2 Sizee;
+    public bool Sound = false;
+    public int sound1in = 10;
 
     public override void _Ready()
     {
@@ -23,19 +26,19 @@ public partial class Bullet : RigidBody2D
             Position = Pos;
             Vector2 direction = (Target - GlobalPosition).Normalized();
             _velocity = direction * Speed;
-            Connect("body_entered", new Callable(this, nameof(OnBodyEntered)));
+            Scale = Sizee;
+            if (Sound)
+            {
+                if ((int)GD.RandRange(1,sound1in) == 1)
+                GetNode<AudioStreamPlayer2D>("Sound" + ((int)GD.RandRange(1, 3)).ToString()).Play();
+            }
         }
+        Scale = Sizee;
         MoveAndCollide(_velocity * (float)delta);
-
-    }
-
-    private void OnBodyEntered(Node body)
-    {
-        if (body is StaticBody2D)
+        if (GetNode<Area2D>("Area2D").HasOverlappingBodies() == true && GetNode<Area2D>("Area2D").OverlapsBody(GetTree().Root.GetNode<StaticBody2D>("Node2D/bulletcol")) == true)
         {
-            GD.Print("Hit a static body (like a wall)");
-            QueueFree(); // destroy the bullet
+            QueueFree();
         }
-    }
 
+    }
 }

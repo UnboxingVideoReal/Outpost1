@@ -24,6 +24,10 @@ public partial class PlayerBullet : RigidBody2D
         }
         LinearVelocity = new Vector2(0, -Speed);
         MoveAndCollide(LinearVelocity);
+        if (GetNode<Area2D>("Area2D").HasOverlappingBodies() == true && GetNode<Area2D>("Area2D").OverlapsBody(GetTree().Root.GetNode<StaticBody2D>("Node2D/bulletcol")) == true)
+        {
+            QueueFree();
+        }
     }
 
 }

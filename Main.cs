@@ -9,14 +9,28 @@ public partial class Main : Node2D
     {
         swidth = GetViewportRect().Size.X;
         sheight = GetViewportRect().Size.Y;
+        SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(GetViewportRect().Size.X, 0), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
+        SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(0, 0), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
+        SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(GetViewportRect().Size.X, GetViewportRect().Size.Y), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
+        SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(0, GetViewportRect().Size.Y), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
+
+    }
+
+    public void SpawnBullet(bool visible, Vector2 scale, float speed, Vector2 position, Vector2 target, bool sound, int soundchance)
+    {
+        swidth = GetViewportRect().Size.X;
+        sheight = GetViewportRect().Size.Y;
         PackedScene bulletscene = (PackedScene)ResourceLoader.Load("res://Bullet.tscn");
 
         Bullet bullet = (Bullet)bulletscene.Instantiate();
 
-        bullet.Set("Visi", true);
-        bullet.Set("Speed", 100f);
-        bullet.Set("Pos", new Vector2(GetViewportRect().Size.X / 2, GetViewportRect().Size.Y / 4));
-        bullet.Set("Target", new Vector2(GD.RandRange(-10, 10), GD.RandRange(-10, 10)));
+        bullet.Set("Visi", visible);
+        bullet.Set("Sizee", scale);
+        bullet.Set("Speed", speed);
+        bullet.Set("Pos", position);
+        bullet.Set("Target", target);
+        bullet.Set("Sound", sound);
+        bullet.Set("sound1in", soundchance);
 
         GetTree().Root.AddChild(bullet);
 
