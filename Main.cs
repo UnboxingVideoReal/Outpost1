@@ -9,10 +9,12 @@ public partial class Main : Node2D
     {
         swidth = GetViewportRect().Size.X;
         sheight = GetViewportRect().Size.Y;
-        SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(GetViewportRect().Size.X, 0), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
-        SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(0, 0), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
-        SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(GetViewportRect().Size.X, GetViewportRect().Size.Y), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
-        SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(0, GetViewportRect().Size.Y), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
+        /*        SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(GetViewportRect().Size.X, 0), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
+                SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(0, 0), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
+                SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(GetViewportRect().Size.X, GetViewportRect().Size.Y), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
+                SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(0, GetViewportRect().Size.Y), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-360, 360), GD.RandRange(-360, 360)), true, 10);
+        */
+        SpawnBullet(true, new Vector2(2, 2), 500f, new Vector2(swidth / 2, sheight / 4), GetNode<CharacterBody2D>("Enigma").GlobalPosition + new Vector2(GD.RandRange(-10, 10), GD.RandRange(-10, 10)), true, 10);
 
     }
 

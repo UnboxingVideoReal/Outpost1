@@ -8,6 +8,8 @@ public partial class Enigma : CharacterBody2D
     [Export]
     public Node2D baseNode;
     public int Speed { get; set; } = 350;
+    public int Lives = 4;
+    public int Continues = 3;
     private AnimatedSprite2D _animatedSprite;
 
     public override void _Ready()
