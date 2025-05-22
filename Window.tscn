@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cow7en63wmyqq"]
+
+[ext_resource type="Texture2D" uid="uid://o7a1f3p6j5fr" path="res://assets/icon.svg" id="1_808dq"]
+
+[node name="Window" type="Window"]
+gui_embed_subwindows = true
+unresizable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_808dq")

@@ -41,6 +41,7 @@ public partial class Bullet : RigidBody2D
         }
         if (GetNode<Area2D>("Area2D").HasOverlappingBodies() == true && GetNode<Area2D>("Area2D").OverlapsBody(GetTree().Root.GetNode<CharacterBody2D>("Node2D/Enigma")) == true)
         {
+            GetTree().CallGroup("death", "Death");
             QueueFree();
         }
     }

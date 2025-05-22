@@ -91,4 +91,11 @@ public partial class Enigma : CharacterBody2D
             MoveAndSlide();
 
     }
+
+    public AudioStreamPlayer2D waaa;
+    public void Death()
+    {
+        waaa = GetNode<AudioStreamPlayer2D>("Death");
+        waaa.Play();
+    }
 }

@@ -25,6 +25,10 @@ window/size/resizable=false
 
 project/assembly_name="outpost"
 
+[global_group]
+
+death="DIEDIEDIEDIEDIEDIEIDEIDEIDIE"
+
 [input]
 
 left={
